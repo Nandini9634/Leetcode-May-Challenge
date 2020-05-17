@@ -1,10 +1,7 @@
 class Solution {
 public:
     vector<int> findAnagrams(string s, string p) {
-        int lens=s.length();
-        int lenp=p.length();
-        
-        if(lenp > lens) return vector<int>();
+        if(p.length() > s.length()) return vector<int>();
         
         vector<int> result;
         vector<int> hs(26,0);
