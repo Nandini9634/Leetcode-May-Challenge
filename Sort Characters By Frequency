@@ -1,0 +1,30 @@
+class Solution {
+public:
+    static bool cmp(pair<int,char> a,pair<int,char> b){ return a.first<b.first ;}
+    
+    string frequencySort(string s) {
+        int n=s.length();
+        string result;
+        map<char,int> m;
+        for(int i=0;i<n;i++)
+        {
+            if(m.find(s[i])==m.end()) m.insert(make_pair(s[i],1));
+            else m[s[i]]++;
+        }
+        vector<pair<int,char> >v;
+        map <char, int> :: iterator i = m.begin();
+        while(i!=m.end())
+        {
+            v.push_back(make_pair(i->second,i->first));
+            i++;
+        }
+        sort(v.rbegin(),v.rend(),cmp);
+        string ans="";
+        for(int i=0;i<v.size();i++)
+        {
+            int t = v[i].first;
+            while(t--)ans += v[i].second;
+        }
+        return ans;
+    }
+};
